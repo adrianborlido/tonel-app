@@ -6,19 +6,20 @@
   <title>Support — Tonel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0c0c0c;
+      --bg: #0a0a0a;
       --surface: #141414;
       --border: #1f1f1f;
+      --border2: #2a2a2a;
       --accent: #c6ff00;
-      --accent-dim: rgba(198, 255, 0, 0.1);
-      --text: #e8e8e8;
-      --text-muted: #666;
-      --text-subtle: #444;
+      --accent-dim: rgba(198, 255, 0, 0.08);
+      --text: #f0f0f0;
+      --text-sec: #999;
+      --text-muted: #555;
     }
 
     html { scroll-behavior: smooth; }
@@ -34,54 +35,53 @@
 
     /* ── Nav ── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 2rem;
-      border-bottom: 1px solid var(--border);
-      background: rgba(12, 12, 12, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
 
     .nav-logo {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: -0.01em;
+      font-size: 1.25rem; color: var(--text);
+      text-decoration: none; letter-spacing: -0.02em;
     }
-
     .nav-logo span { color: var(--accent); }
 
-    nav a.nav-link {
-      font-size: 0.8rem;
-      font-weight: 400;
-      color: var(--text-muted);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; }
+
+    .nav-links a {
+      font-size: 0.78rem; font-weight: 400;
+      color: var(--text-muted); text-decoration: none;
+      letter-spacing: 0.08em; text-transform: uppercase;
       transition: color 0.2s;
     }
+    .nav-links a:hover { color: var(--text); }
 
-    nav a.nav-link:hover { color: var(--text); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.78rem !important; font-weight: 500 !important;
+      color: #000 !important; background: var(--accent);
+      border-radius: 2rem; padding: 0.45rem 1rem !important;
+      text-transform: none !important; letter-spacing: 0 !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85 !important; }
 
     /* ── Hero ── */
     .hero {
-      padding: 9rem 2rem 5rem;
+      padding: 9rem 2rem 4rem;
       max-width: 680px;
       margin: 0 auto;
     }
 
     .hero-label {
       display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
       color: var(--accent);
       border: 1px solid rgba(198, 255, 0, 0.3);
       padding: 0.3rem 0.75rem;
@@ -92,274 +92,193 @@
     .hero h1 {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(2.8rem, 8vw, 4.5rem);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 1.25rem;
+      line-height: 1.05; letter-spacing: -0.02em;
+      color: var(--text); margin-bottom: 1.25rem;
     }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
 
     .hero p {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 480px;
-      line-height: 1.7;
+      font-size: 1.05rem; color: var(--text-sec);
+      max-width: 480px; line-height: 1.7;
     }
 
     /* ── Contact card ── */
     .contact-section {
-      max-width: 680px;
-      margin: 0 auto;
+      max-width: 680px; margin: 0 auto;
       padding: 0 2rem 4rem;
     }
 
     .contact-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2.5rem;
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      position: relative;
-      overflow: hidden;
+      border-radius: 16px; padding: 2.5rem;
+      display: flex; align-items: center; gap: 2rem;
+      position: relative; overflow: hidden;
     }
 
     .contact-card::before {
       content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, var(--accent), transparent);
     }
 
     .contact-icon {
-      width: 56px;
-      height: 56px;
+      width: 56px; height: 56px;
       background: var(--accent-dim);
       border: 1px solid rgba(198, 255, 0, 0.2);
       border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
-
     .contact-icon svg { width: 24px; height: 24px; color: var(--accent); }
 
     .contact-text h3 {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem;
-      margin-bottom: 0.35rem;
+      font-size: 1.25rem; margin-bottom: 0.35rem;
     }
 
     .contact-text p {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
+      font-size: 0.875rem; color: var(--text-sec); margin-bottom: 1rem;
     }
 
     .contact-text a.email-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--accent);
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.875rem; font-weight: 500;
+      color: var(--accent); text-decoration: none;
       border-bottom: 1px solid rgba(198, 255, 0, 0.3);
-      padding-bottom: 1px;
-      transition: border-color 0.2s;
+      padding-bottom: 1px; transition: border-color 0.2s;
     }
-
     .contact-text a.email-link:hover { border-color: var(--accent); }
 
     /* ── Section ── */
-    .section {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 2rem 5rem;
-    }
+    .section { max-width: 680px; margin: 0 auto; padding: 0 2rem 5rem; }
 
-    .section-header {
-      margin-bottom: 2rem;
-    }
+    .section-header { margin-bottom: 2rem; }
 
     .section-header h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.8rem;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.35rem;
+      font-size: 1.8rem; letter-spacing: -0.02em; margin-bottom: 0.35rem;
     }
 
-    .section-header p {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-    }
+    .section-header p { font-size: 0.875rem; color: var(--text-sec); }
 
     /* ── FAQ ── */
     .faq-list { list-style: none; }
 
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .faq-item:first-child {
-      border-top: 1px solid var(--border);
-    }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
 
     .faq-toggle {
-      width: 100%;
-      background: none;
-      border: none;
-      color: var(--text);
-      cursor: pointer;
+      width: 100%; background: none; border: none;
+      color: var(--text); cursor: pointer;
       padding: 1.25rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
       text-align: left;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 400;
+      font-size: 0.95rem; font-weight: 400;
       letter-spacing: -0.01em;
     }
-
     .faq-toggle:hover { color: var(--accent); }
 
     .faq-chevron {
-      flex-shrink: 0;
-      width: 18px;
-      height: 18px;
+      flex-shrink: 0; width: 18px; height: 18px;
       color: var(--text-muted);
       transition: transform 0.25s ease, color 0.2s;
     }
-
-    .faq-item.open .faq-chevron {
-      transform: rotate(180deg);
-      color: var(--accent);
-    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--accent); }
 
     .faq-body {
-      display: none;
-      padding-bottom: 1.25rem;
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      line-height: 1.75;
-      max-width: 540px;
+      display: none; padding-bottom: 1.25rem;
+      font-size: 0.875rem; color: var(--text-sec);
+      line-height: 1.75; max-width: 540px;
     }
-
     .faq-item.open .faq-body { display: block; }
 
     .faq-body a {
-      color: var(--accent);
-      text-decoration: none;
+      color: var(--accent); text-decoration: none;
       border-bottom: 1px solid rgba(198, 255, 0, 0.3);
     }
 
     /* ── Steps ── */
     .steps { display: flex; flex-direction: column; gap: 1rem; }
 
-    .step {
-      display: grid;
-      grid-template-columns: 2.5rem 1fr;
-      gap: 1rem;
-      align-items: start;
-    }
+    .step { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start; }
 
     .step-num {
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2.5rem; height: 2.5rem;
       background: var(--accent-dim);
       border: 1px solid rgba(198, 255, 0, 0.25);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--accent);
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--accent); flex-shrink: 0;
     }
 
-    .step-content h4 {
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-bottom: 0.2rem;
-      padding-top: 0.5rem;
-    }
-
-    .step-content p {
-      font-size: 0.825rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
+    .step-content h4 { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.2rem; padding-top: 0.5rem; }
+    .step-content p { font-size: 0.825rem; color: var(--text-sec); line-height: 1.6; }
 
     /* ── Divider ── */
     .divider {
-      max-width: 680px;
-      margin: 0 auto 4rem;
-      padding: 0 2rem;
-      border: none;
+      max-width: 680px; margin: 0 auto 4rem;
+      padding: 0 2rem; border: none;
       border-top: 1px solid var(--border);
     }
 
     /* ── Footer ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      max-width: 680px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
+    footer { border-top: 1px solid var(--border); }
+
+    .footer-inner {
+      max-width: 680px; margin: 0 auto; padding: 2rem;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem; flex-wrap: wrap;
     }
 
-    footer p {
-      font-size: 0.775rem;
-      color: var(--text-subtle);
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem; color: var(--text-muted); text-decoration: none;
     }
+    .footer-logo span { color: var(--accent); }
 
-    footer a {
-      font-size: 0.775rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
+    .footer-links { display: flex; align-items: center; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 0.75rem; color: var(--text-muted);
+      text-decoration: none; transition: color 0.2s;
     }
+    .footer-links a:hover { color: var(--text); }
 
-    footer a:hover { color: var(--text); }
+    .footer-copy { font-size: 0.72rem; color: var(--text-muted); }
 
     /* ── Responsive ── */
-    @media (max-width: 540px) {
+    @media (max-width: 600px) {
       nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.7rem; }
       .hero, .contact-section, .section { padding-left: 1.25rem; padding-right: 1.25rem; }
       .contact-card { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
-      footer { flex-direction: column; align-items: flex-start; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="privacy-policy.html" class="nav-logo">Tonel<span>.</span></a>
-    <a href="privacy-policy.html" class="nav-link">Privacy Policy</a>
+    <a href="marketing.html" class="nav-logo">Tonel<span>.</span></a>
+    <div class="nav-links">
+      <a href="marketing.html">Home</a>
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="#" class="nav-cta">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        App Store
+      </a>
+    </div>
   </nav>
 
-  <!-- Hero -->
   <section class="hero">
     <span class="hero-label">Support</span>
     <h1>How can we <em>help?</em></h1>
     <p>Have a question or running into an issue? We're here. Reach out directly or browse the answers below.</p>
   </section>
 
-  <!-- Contact -->
   <section class="contact-section">
     <div class="contact-card">
       <div class="contact-icon">
@@ -382,7 +301,6 @@
 
   <hr class="divider" />
 
-  <!-- Getting Started -->
   <section class="section">
     <div class="section-header">
       <h2>Getting started</h2>
@@ -422,7 +340,6 @@
 
   <hr class="divider" />
 
-  <!-- FAQ -->
   <section class="section">
     <div class="section-header">
       <h2>Common questions</h2>
@@ -433,9 +350,7 @@
       <li class="faq-item">
         <button class="faq-toggle" aria-expanded="false">
           Is my workout data backed up?
-          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
         </button>
         <div class="faq-body">
           All data is stored locally on your iPhone. If you have iCloud Backup enabled in iOS Settings, your Tonel data is included in your device backup and will restore when you set up a new iPhone from that backup.
@@ -445,9 +360,7 @@
       <li class="faq-item">
         <button class="faq-toggle" aria-expanded="false">
           How do personal records work?
-          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
         </button>
         <div class="faq-body">
           Tonel detects PRs automatically at the end of each set. Strength PRs are ranked by estimated 1-rep max (Epley formula), so a set of 5 reps at 80 kg can beat a previous single at 90 kg if the formula says so. Timed exercises track your longest duration; distance exercises track your farthest distance.
@@ -457,9 +370,7 @@
       <li class="faq-item">
         <button class="faq-toggle" aria-expanded="false">
           Can I switch between kilograms and pounds?
-          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
         </button>
         <div class="faq-body">
           Yes. Open <strong>Settings</strong> inside Tonel and toggle the unit preference. All weights are stored in kilograms internally and converted on-screen, so switching at any time is safe and won't corrupt your history.
@@ -469,9 +380,7 @@
       <li class="faq-item">
         <button class="faq-toggle" aria-expanded="false">
           How do I add a custom exercise?
-          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
         </button>
         <div class="faq-body">
           Go to the <strong>Exercises</strong> tab and tap <strong>+</strong>. Give your exercise a name, choose a muscle group, and select the tracking type (weight &amp; reps, time, or distance). It will appear in your exercise catalog immediately.
@@ -481,9 +390,7 @@
       <li class="faq-item">
         <button class="faq-toggle" aria-expanded="false">
           I accidentally deleted a workout. Can I recover it?
-          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
         </button>
         <div class="faq-body">
           Tonel shows a 5-second undo banner after deletion — tap <strong>Undo</strong> before it disappears to restore the session. Once confirmed, deletion is permanent as Tonel does not send data to any server. If you have an iCloud Backup, restoring your device from a recent backup will recover the session.
@@ -493,9 +400,7 @@
       <li class="faq-item">
         <button class="faq-toggle" aria-expanded="false">
           Does Tonel work offline?
-          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
         </button>
         <div class="faq-body">
           Completely. Tonel has no server dependency — every feature works without an internet connection. Your data never leaves your device.
@@ -505,9 +410,7 @@
       <li class="faq-item">
         <button class="faq-toggle" aria-expanded="false">
           What iOS version do I need?
-          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
         </button>
         <div class="faq-body">
           Tonel requires iOS 26 or later on iPhone. It is not currently available on iPad or Apple Watch.
@@ -517,10 +420,15 @@
     </ul>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Tonel. All rights reserved.</p>
-    <a href="privacy-policy.html">Privacy Policy</a>
+    <div class="footer-inner">
+      <a href="marketing.html" class="footer-logo">Tonel<span>.</span></a>
+      <div class="footer-links">
+        <a href="marketing.html">Home</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </div>
+      <p class="footer-copy">&copy; 2025 Tonel. All rights reserved.</p>
+    </div>
   </footer>
 
   <script>
