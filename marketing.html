@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tonel — Gym Tracker for iPhone</title>
-  <meta name="description" content="Track your workouts, crush personal records, and build your best routines. All on your iPhone. No account, no cloud, no fluff." />
+  <meta name="description" content="Track your workouts, crush personal records, and build your best routines. All on your iPhone. No account, no cloud, no subscription." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
@@ -13,16 +13,13 @@
 
     :root {
       --bg: #0a0a0a;
-      --bg2: #111;
-      --surface: #161616;
-      --surface2: #1c1c1c;
-      --border: #222;
+      --surface: #141414;
+      --border: #1f1f1f;
       --border2: #2a2a2a;
       --accent: #c6ff00;
       --accent-dim: rgba(198, 255, 0, 0.08);
-      --accent-mid: rgba(198, 255, 0, 0.18);
       --text: #f0f0f0;
-      --text-sec: #aaa;
+      --text-sec: #999;
       --text-muted: #555;
     }
 
@@ -38,673 +35,329 @@
       overflow-x: hidden;
     }
 
-    /* ─── NAV ─── */
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
       padding: 1.1rem 2rem;
       border-bottom: 1px solid rgba(255,255,255,0.06);
-      background: rgba(10,10,10,0.8);
+      background: rgba(10,10,10,0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
     }
 
     .nav-logo {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: -0.02em;
+      font-size: 1.25rem; color: var(--text);
+      text-decoration: none; letter-spacing: -0.02em;
     }
     .nav-logo span { color: var(--accent); }
 
     .nav-links { display: flex; align-items: center; gap: 2rem; }
 
     .nav-links a {
-      font-size: 0.78rem;
-      font-weight: 400;
-      color: var(--text-muted);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-size: 0.78rem; font-weight: 400;
+      color: var(--text-muted); text-decoration: none;
+      letter-spacing: 0.08em; text-transform: uppercase;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--text); }
 
     .nav-cta {
       display: inline-flex; align-items: center; gap: 0.4rem;
-      font-size: 0.78rem !important;
-      font-weight: 500 !important;
-      color: var(--bg) !important;
-      background: var(--accent);
-      border-radius: 2rem;
-      padding: 0.45rem 1rem !important;
-      text-transform: none !important;
-      letter-spacing: 0 !important;
+      font-size: 0.78rem !important; font-weight: 500 !important;
+      color: #000 !important; background: var(--accent);
+      border-radius: 2rem; padding: 0.45rem 1rem !important;
+      text-transform: none !important; letter-spacing: 0 !important;
       transition: opacity 0.2s !important;
     }
-    .nav-cta:hover { opacity: 0.85 !important; color: var(--bg) !important; }
+    .nav-cta:hover { opacity: 0.85 !important; }
 
-    /* ─── HERO ─── */
+    /* ── HERO ── */
     .hero {
       min-height: 100svh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 4rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 7rem 2rem 4rem;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
     }
 
-    .hero-copy { max-width: 520px; }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 500px;
+      background: radial-gradient(ellipse at center top, rgba(198,255,0,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
 
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--accent);
       border: 1px solid rgba(198,255,0,0.25);
       background: var(--accent-dim);
-      border-radius: 2rem;
-      padding: 0.3rem 0.8rem;
-      margin-bottom: 1.75rem;
+      border-radius: 2rem; padding: 0.3rem 0.8rem;
+      margin-bottom: 2rem;
     }
 
     .hero-badge::before {
       content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
+      width: 6px; height: 6px; border-radius: 50%;
       background: var(--accent);
       animation: pulse 2s ease-in-out infinite;
     }
 
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.7); }
+      50% { opacity: 0.35; transform: scale(0.65); }
     }
 
     .hero h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(3rem, 5.5vw, 4.75rem);
-      line-height: 1.04;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      margin-bottom: 1.5rem;
+      font-size: clamp(3.2rem, 8vw, 6rem);
+      line-height: 1.02; letter-spacing: -0.03em;
+      color: var(--text); margin-bottom: 1.5rem;
+      max-width: 760px;
     }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
 
     .hero-sub {
-      font-size: 1.05rem;
-      color: var(--text-sec);
-      line-height: 1.75;
-      margin-bottom: 2.5rem;
-      max-width: 400px;
+      font-size: 1.1rem; color: var(--text-sec);
+      line-height: 1.7; max-width: 460px;
+      margin: 0 auto 2.5rem;
     }
 
-    .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .btn-appstore {
+      display: inline-flex; align-items: center; gap: 0.65rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem; font-weight: 500;
+      color: #000; background: var(--accent);
+      border-radius: 3rem; padding: 0.9rem 2rem;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      margin-bottom: 3.5rem;
+    }
+    .btn-appstore:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .hero-stats { display: flex; align-items: center; gap: 2.5rem; justify-content: center; }
+
+    .hero-stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.75rem; letter-spacing: -0.03em;
+      color: var(--text); line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.72rem; color: var(--text-muted);
+      letter-spacing: 0.06em; text-transform: uppercase; margin-top: 0.2rem;
+    }
+    .hero-stat-sep { width: 1px; height: 2.5rem; background: var(--border2); }
+
+    /* ── SCREENSHOT STRIP ── */
+    .strip-section { padding: 5rem 0 6rem; position: relative; overflow: hidden; }
+
+    .strip-label {
+      text-align: center; font-size: 0.72rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 2.5rem;
+    }
+
+    .strip-track {
+      display: flex; gap: 1.25rem;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 1rem 3rem 2rem;
+      cursor: grab;
+    }
+    .strip-track::-webkit-scrollbar { display: none; }
+    .strip-track:active { cursor: grabbing; }
+
+    .strip-track img {
+      flex-shrink: 0; width: 220px;
+      border-radius: 24px; scroll-snap-align: start;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+      pointer-events: none;
+    }
+    .strip-track img:hover { transform: translateY(-6px) scale(1.02); }
+
+    .strip-section::before, .strip-section::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 80px;
+      pointer-events: none; z-index: 1;
+    }
+    .strip-section::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
+    .strip-section::after { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
+
+    /* ── FEATURES ── */
+    .features { max-width: 1160px; margin: 0 auto; padding: 0 2rem 2rem; }
+
+    .feature {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+      padding: 5rem 0; border-top: 1px solid var(--border);
+    }
+
+    .feature-img { display: flex; align-items: center; justify-content: center; }
+
+    .feature-img img {
+      width: 100%; max-width: 300px; border-radius: 28px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .feature-reverse .feature-img { order: 2; }
+    .feature-reverse .feature-text { order: 1; }
+
+    .feature-eyebrow {
+      display: inline-block; font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1rem;
+    }
+
+    .feature-text h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 1rem;
+    }
+    .feature-text h2 em { font-style: italic; color: var(--accent); }
+
+    .feature-text p {
+      font-size: 0.95rem; color: var(--text-sec);
+      line-height: 1.75; margin-bottom: 1.75rem; max-width: 420px;
+    }
+
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .check-list li {
+      display: flex; align-items: center; gap: 0.65rem;
+      font-size: 0.875rem; color: var(--text-sec);
+    }
+    .check-dot {
+      flex-shrink: 0; width: 5px; height: 5px;
+      border-radius: 50%; background: var(--accent); opacity: 0.7;
+    }
+
+    /* ── PRICING ── */
+    .pricing-section { border-top: 1px solid var(--border); padding: 6rem 2rem; }
+
+    .pricing-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+
+    .pricing-img-wrap { display: flex; align-items: center; justify-content: center; }
+
+    .pricing-img-wrap img {
+      width: 100%; max-width: 300px; border-radius: 28px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .pricing-text { max-width: 460px; }
+
+    .pricing-text h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1rem;
+    }
+
+    .pricing-text p {
+      font-size: 1rem; color: var(--text-sec);
+      line-height: 1.75; margin-bottom: 2rem;
+    }
+
+    .pricing-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+    .pill {
+      font-size: 0.78rem; font-weight: 400;
+      color: var(--text-sec); border: 1px solid var(--border2);
+      border-radius: 2rem; padding: 0.3rem 0.85rem;
+      background: var(--surface);
+    }
 
     .btn-primary {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      font-size: 0.9rem;
-      font-weight: 500;
+      display: inline-flex; align-items: center; gap: 0.65rem;
       font-family: 'DM Sans', sans-serif;
-      color: var(--bg);
-      background: var(--accent);
-      border: none;
-      border-radius: 3rem;
-      padding: 0.85rem 1.75rem;
-      text-decoration: none;
-      cursor: pointer;
-      transition: opacity 0.2s, transform 0.15s;
+      font-size: 0.9rem; font-weight: 500;
+      color: #000; background: var(--accent);
+      border: none; border-radius: 3rem;
+      padding: 0.85rem 1.75rem; text-decoration: none;
+      cursor: pointer; transition: opacity 0.2s, transform 0.15s;
     }
     .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
 
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: var(--text-sec);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .btn-secondary:hover { color: var(--text); }
-    .btn-secondary svg { opacity: 0.5; }
-
-    .hero-meta {
-      display: flex; align-items: center; gap: 1.5rem;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .hero-stat { text-align: left; }
-    .hero-stat-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.6rem;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 0.15rem;
-    }
-    .hero-stat-label { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
-
-    .hero-sep { width: 1px; height: 2.5rem; background: var(--border2); }
-
-    /* ─── PHONE MOCKUP ─── */
-    .hero-visual {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .phone-wrap {
-      position: relative;
-      width: 260px;
-      animation: float 5s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    .phone-glow {
-      position: absolute;
-      inset: -40px;
-      background: radial-gradient(ellipse at center, rgba(198,255,0,0.12) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .phone-frame {
-      position: relative;
-      z-index: 1;
-      background: #1a1a1a;
-      border: 1.5px solid #333;
-      border-radius: 44px;
-      padding: 12px;
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.04),
-        0 40px 80px rgba(0,0,0,0.6),
-        0 20px 40px rgba(0,0,0,0.4);
-    }
-
-    .phone-notch {
-      width: 90px; height: 28px;
-      background: #0a0a0a;
-      border-radius: 0 0 18px 18px;
-      margin: 0 auto 0;
-      position: relative;
-      z-index: 2;
-    }
-
-    .phone-screen {
-      background: #0c0c0c;
-      border-radius: 36px;
-      overflow: hidden;
-      aspect-ratio: 9/19.5;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .screen-header {
-      padding: 0.9rem 1rem 0.5rem;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    .screen-header-row {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 0.6rem;
-    }
-    .screen-title {
-      font-size: 0.6rem; font-weight: 600; color: #e0e0e0;
-      letter-spacing: 0.01em;
-    }
-    .screen-time { font-size: 0.55rem; color: #666; }
-
-    .screen-timer {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.5rem;
-      color: var(--accent);
-      letter-spacing: -0.02em;
-      line-height: 1;
-      margin-bottom: 0.15rem;
-    }
-    .screen-timer-label { font-size: 0.45rem; color: #555; text-transform: uppercase; letter-spacing: 0.08em; }
-
-    .screen-body { padding: 0.6rem 0.75rem; flex: 1; overflow: hidden; }
-
-    .screen-exercise {
-      background: #161616;
-      border: 1px solid #222;
-      border-radius: 10px;
-      padding: 0.5rem 0.65rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .screen-ex-name { font-size: 0.5rem; font-weight: 500; color: #ccc; margin-bottom: 0.35rem; }
-
-    .set-row {
-      display: grid;
-      grid-template-columns: 0.5fr 1fr 1fr 0.6fr;
-      gap: 0.2rem;
-      font-size: 0.42rem;
-      color: #555;
-      margin-bottom: 0.2rem;
-    }
-    .set-row.header { font-size: 0.38rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .set-row.done { color: #999; }
-    .set-row.done .set-cell:last-child { color: var(--accent); font-weight: 500; }
-    .set-row.active { color: var(--text); }
-    .set-row.active .set-cell:last-child {
-      color: var(--bg);
-      background: var(--accent);
-      border-radius: 4px;
-      padding: 0.1rem 0.25rem;
-      font-weight: 600;
-    }
-    .set-cell { display: flex; align-items: center; }
-
-    .screen-pr-badge {
-      display: inline-flex; align-items: center; gap: 0.2rem;
-      font-size: 0.38rem; font-weight: 600;
-      color: var(--bg);
-      background: var(--accent);
-      border-radius: 3px;
-      padding: 0.1rem 0.3rem;
-      margin-left: 0.3rem;
-    }
-
-    .screen-rest {
-      background: #0e0e0e;
-      border: 1px solid #1f1f1f;
-      border-radius: 10px;
-      padding: 0.5rem 0.65rem;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .rest-label { font-size: 0.42rem; color: #555; text-transform: uppercase; letter-spacing: 0.06em; }
-    .rest-count { font-family: 'DM Serif Display', serif; font-size: 0.9rem; color: #e0e0e0; }
-
-    /* ─── FEATURES ─── */
-    .features {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 6rem 2rem;
-    }
-
-    .section-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .section-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
-
-    .section-sub {
-      font-size: 1rem;
-      color: var(--text-sec);
-      max-width: 440px;
-      line-height: 1.7;
-      margin-bottom: 3.5rem;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .feature-card {
-      background: var(--bg);
-      padding: 2rem;
-      transition: background 0.2s;
-    }
-    .feature-card:hover { background: var(--surface); }
-
-    .feature-icon {
-      width: 40px; height: 40px;
-      background: var(--accent-dim);
-      border: 1px solid rgba(198,255,0,0.2);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.25rem;
-      color: var(--accent);
-    }
-    .feature-icon svg { width: 18px; height: 18px; }
-
-    .feature-card h3 {
-      font-size: 0.95rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-    }
-
-    .feature-card p {
-      font-size: 0.825rem;
-      color: var(--text-sec);
-      line-height: 1.65;
-    }
-
-    /* ─── HIGHLIGHT ─── */
-    .highlight {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem 2rem 6rem;
-    }
-
-    .highlight-inner {
-      background: var(--surface);
-      border: 1px solid var(--border2);
-      border-radius: 24px;
-      padding: 4rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .highlight-inner::before {
-      content: '';
-      position: absolute;
-      top: -80px; right: -80px;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(198,255,0,0.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .highlight-label {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.25rem;
-    }
-
-    .highlight h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      letter-spacing: -0.025em;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-    }
-
-    .highlight h2 em { font-style: italic; color: var(--accent); }
-
-    .highlight p {
-      font-size: 0.9rem;
-      color: var(--text-sec);
-      line-height: 1.75;
-      margin-bottom: 2rem;
-    }
-
-    .check-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-
-    .check-list li {
-      display: flex; align-items: flex-start; gap: 0.75rem;
-      font-size: 0.875rem;
-      color: var(--text-sec);
-      line-height: 1.5;
-    }
-
-    .check-icon {
-      flex-shrink: 0;
-      width: 18px; height: 18px;
-      background: var(--accent-dim);
-      border: 1px solid rgba(198,255,0,0.25);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin-top: 1px;
-      color: var(--accent);
-    }
-    .check-icon svg { width: 9px; height: 9px; }
-
-    /* Stats panel on the right */
-    .stats-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .stat-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.25rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .stat-card-icon {
-      width: 38px; height: 38px;
-      background: var(--accent-dim);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      color: var(--accent);
-    }
-    .stat-card-icon svg { width: 16px; height: 16px; }
-
-    .stat-card-val {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.6rem;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      color: var(--text);
-    }
-
-    .stat-card-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .pr-strip {
-      background: var(--accent);
-      border-radius: 14px;
-      padding: 1.25rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .pr-strip-left { }
-    .pr-strip-label { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(0,0,0,0.5); margin-bottom: 0.2rem; }
-    .pr-strip-val { font-family: 'DM Serif Display', serif; font-size: 1.6rem; letter-spacing: -0.03em; color: var(--bg); line-height: 1; }
-    .pr-strip-sub { font-size: 0.7rem; color: rgba(0,0,0,0.5); }
-
-    .pr-strip-badge {
-      font-size: 0.65rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--bg);
-      background: rgba(0,0,0,0.15);
-      border-radius: 2rem;
-      padding: 0.3rem 0.75rem;
-    }
-
-    /* ─── PRINCIPLES ─── */
-    .principles {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem 2rem 8rem;
-    }
-
-    .principles-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .principles-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-    }
-
-    .principle {
-      text-align: center;
-      padding: 2rem 1.25rem;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: var(--surface);
-      transition: border-color 0.2s;
-    }
-    .principle:hover { border-color: rgba(198,255,0,0.25); }
-
-    .principle-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.5rem;
-      color: var(--accent);
-      opacity: 0.25;
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-
-    .principle h4 {
-      font-size: 0.875rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-    }
-
-    .principle p {
-      font-size: 0.78rem;
-      color: var(--text-sec);
-      line-height: 1.6;
-    }
-
-    /* ─── CTA ─── */
-    .cta-section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem 2rem 8rem;
-    }
+    /* ── CTA ── */
+    .cta-section { padding: 6rem 2rem 8rem; }
 
     .cta-inner {
-      border: 1px solid var(--border2);
-      border-radius: 24px;
-      padding: 5rem 2rem;
-      text-align: center;
-      background: var(--surface);
-      position: relative;
-      overflow: hidden;
+      max-width: 680px; margin: 0 auto;
+      text-align: center; border: 1px solid var(--border2);
+      border-radius: 24px; padding: 5rem 2rem;
+      background: var(--surface); position: relative; overflow: hidden;
     }
 
     .cta-inner::before {
       content: '';
-      position: absolute;
-      top: 50%; left: 50%;
+      position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 600px; height: 300px;
+      width: 500px; height: 300px;
       background: radial-gradient(ellipse, rgba(198,255,0,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .cta-inner h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      position: relative;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: -0.03em; line-height: 1.1;
+      margin-bottom: 1rem; position: relative;
     }
-
     .cta-inner h2 em { font-style: italic; color: var(--accent); }
 
-    .cta-inner p {
-      font-size: 1rem;
-      color: var(--text-sec);
-      margin-bottom: 2.5rem;
-      position: relative;
+    .cta-inner > p {
+      font-size: 1rem; color: var(--text-sec);
+      margin-bottom: 2.5rem; position: relative;
     }
 
-    .cta-actions {
-      display: flex; align-items: center; justify-content: center;
-      gap: 1rem; flex-wrap: wrap;
-      position: relative;
-    }
+    .cta-note { margin-top: 1.25rem; font-size: 0.75rem; color: var(--text-muted); }
 
-    .cta-note {
-      margin-top: 1.5rem;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      border-top: 1px solid var(--border);
-    }
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); }
 
     .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
+      max-width: 1160px; margin: 0 auto; padding: 2rem;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem; flex-wrap: wrap;
     }
 
     .footer-logo {
       font-family: 'DM Serif Display', serif;
-      font-size: 1rem;
-      color: var(--text-muted);
-      text-decoration: none;
+      font-size: 1rem; color: var(--text-muted); text-decoration: none;
     }
     .footer-logo span { color: var(--accent); }
 
     .footer-links { display: flex; align-items: center; gap: 1.5rem; }
     .footer-links a {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
+      font-size: 0.75rem; color: var(--text-muted);
+      text-decoration: none; transition: color 0.2s;
     }
     .footer-links a:hover { color: var(--text); }
 
     .footer-copy { font-size: 0.72rem; color: var(--text-muted); }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; padding-top: 6rem; }
-      .hero-visual { display: none; }
-      .features-grid { grid-template-columns: 1fr 1fr; }
-      .highlight-inner { grid-template-columns: 1fr; padding: 2.5rem; }
-      .principles-grid { grid-template-columns: 1fr 1fr; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .feature, .pricing-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .feature-reverse .feature-img, .feature-reverse .feature-text { order: unset; }
+      .feature-img img, .pricing-img-wrap img { max-width: 260px; margin: 0 auto; }
+      .pricing-text { max-width: 100%; }
     }
 
     @media (max-width: 600px) {
       nav { padding: 1rem 1.25rem; }
       .nav-links a:not(.nav-cta) { display: none; }
-      .features-grid { grid-template-columns: 1fr; }
-      .principles-grid { grid-template-columns: 1fr 1fr; }
-      .highlight-inner { padding: 2rem 1.5rem; gap: 2rem; }
+      .hero { padding-top: 6rem; }
+      .hero-stats { gap: 1.5rem; }
+      .strip-track img { width: 175px; }
+      .feature { padding: 3.5rem 0; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
     }
   </style>
@@ -716,8 +369,8 @@
     <a href="#" class="nav-logo">Tonel<span>.</span></a>
     <div class="nav-links">
       <a href="#features">Features</a>
-      <a href="#privacy">Privacy</a>
       <a href="support.html">Support</a>
+      <a href="index.html">Privacy</a>
       <a href="#" class="nav-cta">
         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         App Store
@@ -727,237 +380,155 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-copy">
-      <span class="hero-badge">Now on iPhone</span>
-      <h1>Your gym.<br><em>Your data.</em><br>Nothing else.</h1>
-      <p class="hero-sub">Tonel is a focused workout tracker that logs your sets, detects personal records, and builds your training history — entirely on your device.</p>
-      <div class="hero-actions">
-        <a href="#" class="btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          Download on App Store
-        </a>
-        <a href="#features" class="btn-secondary">
-          See features
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" /></svg>
-        </a>
+    <span class="hero-badge">Now on iPhone</span>
+    <h1>Train. Log. <em>Improve.</em></h1>
+    <p class="hero-sub">Your workout journal, built for the gym floor. No account, no cloud, no subscription — just your training.</p>
+    <a href="#" class="btn-appstore">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Download on the App Store
+    </a>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">115+</div>
+        <div class="hero-stat-label">Exercises</div>
       </div>
-      <div class="hero-meta">
-        <div class="hero-stat">
-          <div class="hero-stat-num">115+</div>
-          <div class="hero-stat-label">Exercises</div>
-        </div>
-        <div class="hero-sep"></div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">0</div>
-          <div class="hero-stat-label">Accounts needed</div>
-        </div>
-        <div class="hero-sep"></div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">100%</div>
-          <div class="hero-stat-label">Offline</div>
-        </div>
+      <div class="hero-stat-sep"></div>
+      <div>
+        <div class="hero-stat-num">0</div>
+        <div class="hero-stat-label">Accounts needed</div>
+      </div>
+      <div class="hero-stat-sep"></div>
+      <div>
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">Offline</div>
       </div>
     </div>
+  </section>
 
-    <!-- Phone mockup -->
-    <div class="hero-visual" aria-hidden="true">
-      <div class="phone-wrap">
-        <div class="phone-glow"></div>
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="screen-header">
-              <div class="screen-header-row">
-                <span class="screen-title">Push Day</span>
-                <span class="screen-time">10:34 AM</span>
-              </div>
-              <div class="screen-timer">42:17</div>
-              <div class="screen-timer-label">Elapsed</div>
-            </div>
-            <div class="screen-body">
-              <div class="screen-exercise">
-                <div class="screen-ex-name">
-                  Bench Press
-                  <span class="screen-pr-badge">PR</span>
-                </div>
-                <div class="set-row header">
-                  <div class="set-cell">Set</div>
-                  <div class="set-cell">Prev</div>
-                  <div class="set-cell">Weight</div>
-                  <div class="set-cell">Reps</div>
-                </div>
-                <div class="set-row done">
-                  <div class="set-cell">1</div>
-                  <div class="set-cell">80 × 8</div>
-                  <div class="set-cell">80 kg</div>
-                  <div class="set-cell">✓ 8</div>
-                </div>
-                <div class="set-row done">
-                  <div class="set-cell">2</div>
-                  <div class="set-cell">85 × 6</div>
-                  <div class="set-cell">87.5 kg</div>
-                  <div class="set-cell">✓ 6</div>
-                </div>
-                <div class="set-row active">
-                  <div class="set-cell">3</div>
-                  <div class="set-cell">85 × 5</div>
-                  <div class="set-cell">87.5 kg</div>
-                  <div class="set-cell">Log</div>
-                </div>
-              </div>
-              <div class="screen-rest">
-                <div>
-                  <div class="rest-label">Rest</div>
-                  <div class="rest-count">1:38</div>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#555"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- SCREENSHOT STRIP -->
+  <section class="strip-section">
+    <p class="strip-label">See the app</p>
+    <div class="strip-track" id="strip">
+      <img src="images/Tonel-02-Routines.png" alt="My Routines" draggable="false" />
+      <img src="images/Tonel-03-Log.png" alt="Log Every Set" draggable="false" />
+      <img src="images/Tonel-01-Hero.png" alt="History" draggable="false" />
+      <img src="images/Tonel-05-Progress.png" alt="Personal Records" draggable="false" />
+      <img src="images/Tonel-06-Session.png" alt="Session Detail" draggable="false" />
+      <img src="images/Tonel-04-Exercises.png" alt="Exercise Catalog" draggable="false" />
     </div>
   </section>
 
   <!-- FEATURES -->
-  <section class="features" id="features">
-    <div class="section-eyebrow">Features</div>
-    <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
-    <p class="section-sub">Built for people who want to get stronger, not manage software. Every screen has a job. Every tap counts.</p>
+  <div class="features" id="features">
 
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" /></svg>
-        </div>
-        <h3>Routines</h3>
-        <p>Build unlimited workout templates with any exercises, sets, and ordering. Start a session with one tap.</p>
+    <div class="feature">
+      <div class="feature-img">
+        <img src="images/Tonel-02-Routines.png" alt="My Routines screen" />
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        </div>
-        <h3>Live tracking</h3>
-        <p>Log every set as you go. An elapsed timer, rest countdown, and previous-session reference keep you in the zone.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0" /></svg>
-        </div>
-        <h3>Personal records</h3>
-        <p>PRs are detected automatically using estimated 1RM — so a smart 5-rep set can beat a sloppy single. Badges appear the moment you break a record.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
-        </div>
-        <h3>History & volume</h3>
-        <p>Every session is saved with total volume, duration, and a per-exercise breakdown. See your progress at a glance.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
-        </div>
-        <h3>Exercise catalog</h3>
-        <p>Over 115 exercises across all muscle groups, bilingual (English and Spanish). Add custom exercises when you need something specific.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.6 9.75m6.633-4.596a18.666 18.666 0 01-2.485 5.33" /></svg>
-        </div>
-        <h3>Full privacy</h3>
-        <p>No account, no login, no analytics. Your workouts stay on your device. Always.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- HIGHLIGHT: PR detection -->
-  <section class="highlight" id="privacy">
-    <div class="highlight-inner">
-      <div>
-        <div class="highlight-label">
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          Privacy first
-        </div>
-        <h2>Your data lives on <em>your phone.</em> Full stop.</h2>
-        <p>Tonel doesn't have servers. There's no account to create, no subscription to manage, and no analytics harvesting your health patterns. What you lift stays with you.</p>
+      <div class="feature-text">
+        <span class="feature-eyebrow">Routines</span>
+        <h2>Build Your <em>Split.</em></h2>
+        <p>Push, pull, legs — or any split you choose. Create unlimited workout templates with the exercises, sets, and order that work for your training style.</p>
         <ul class="check-list">
-          <li>
-            <span class="check-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></span>
-            No personal data collected, ever
-          </li>
-          <li>
-            <span class="check-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></span>
-            Works completely offline
-          </li>
-          <li>
-            <span class="check-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></span>
-            No third-party SDKs or trackers
-          </li>
-          <li>
-            <span class="check-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></span>
-            Backed up only through your own iCloud Backup
-          </li>
+          <li><span class="check-dot"></span>Unlimited routines with custom exercises</li>
+          <li><span class="check-dot"></span>Color-coded categories for easy navigation</li>
+          <li><span class="check-dot"></span>See when you last ran each routine</li>
+          <li><span class="check-dot"></span>Start any session in one tap</li>
         </ul>
       </div>
+    </div>
 
-      <div class="stats-panel">
-        <div class="pr-strip">
-          <div class="pr-strip-left">
-            <div class="pr-strip-label">New Personal Record</div>
-            <div class="pr-strip-val">142.5 kg</div>
-            <div class="pr-strip-sub">Deadlift · 1RM estimate</div>
-          </div>
-          <span class="pr-strip-badge">PR</span>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
-          </div>
-          <div>
-            <div class="stat-card-val">18,430 kg</div>
-            <div class="stat-card-label">Volume this month</div>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>
-          </div>
-          <div>
-            <div class="stat-card-val">47</div>
-            <div class="stat-card-label">Sessions logged</div>
-          </div>
-        </div>
+    <div class="feature feature-reverse">
+      <div class="feature-img">
+        <img src="images/Tonel-03-Log.png" alt="Live workout logging" />
+      </div>
+      <div class="feature-text">
+        <span class="feature-eyebrow">Live workout</span>
+        <h2>Log Every <em>Set.</em></h2>
+        <p>Exercises, reps, weight — captured in seconds. Your previous session's numbers are always visible so you always know exactly what to beat.</p>
+        <ul class="check-list">
+          <li><span class="check-dot"></span>Previous performance shown per set</li>
+          <li><span class="check-dot"></span>Rest timer with auto-start after each set</li>
+          <li><span class="check-dot"></span>PR badges appear the moment you break a record</li>
+          <li><span class="check-dot"></span>Add or remove sets on the fly</li>
+        </ul>
       </div>
     </div>
-  </section>
 
-  <!-- PRINCIPLES -->
-  <section class="principles">
-    <div class="principles-header">
-      <div class="section-eyebrow">Philosophy</div>
-      <h2 class="section-title">Designed around the gym, not the app.</h2>
+    <div class="feature">
+      <div class="feature-img">
+        <img src="images/Tonel-05-Progress.png" alt="Personal records and progress" />
+      </div>
+      <div class="feature-text">
+        <span class="feature-eyebrow">Personal records</span>
+        <h2>See Your <em>Gains.</em></h2>
+        <p>Personal records and volume tracked automatically. PRs use estimated 1-rep max — so a smart set of 5 can beat a heavy single. Strength is the real metric.</p>
+        <ul class="check-list">
+          <li><span class="check-dot"></span>Estimated 1RM via the Epley formula</li>
+          <li><span class="check-dot"></span>Weight progression chart per exercise</li>
+          <li><span class="check-dot"></span>Full set-by-set history going back forever</li>
+          <li><span class="check-dot"></span>PRs preserved even if you edit history</li>
+        </ul>
+      </div>
     </div>
-    <div class="principles-grid">
-      <div class="principle">
-        <div class="principle-num">01</div>
-        <h4>Frictionless logging</h4>
-        <p>Less time tapping, more time lifting. Previous performance is always one glance away.</p>
+
+    <div class="feature feature-reverse">
+      <div class="feature-img">
+        <img src="images/Tonel-06-Session.png" alt="Session detail view" />
       </div>
-      <div class="principle">
-        <div class="principle-num">02</div>
-        <h4>Honest records</h4>
-        <p>PRs use estimated 1RM so your progress is measured by strength, not by which rep scheme you chose that day.</p>
+      <div class="feature-text">
+        <span class="feature-eyebrow">History</span>
+        <h2>Relive Every <em>Session.</em></h2>
+        <p>Every set, every rep, every PR from every workout you've finished — volume, duration, and a complete exercise breakdown, saved locally on your iPhone forever.</p>
+        <ul class="check-list">
+          <li><span class="check-dot"></span>Total volume and duration per session</li>
+          <li><span class="check-dot"></span>Per-exercise breakdown with PR markers</li>
+          <li><span class="check-dot"></span>Streaks and weekly session stats</li>
+          <li><span class="check-dot"></span>5-second undo if you delete by mistake</li>
+        </ul>
       </div>
-      <div class="principle">
-        <div class="principle-num">03</div>
-        <h4>No dark patterns</h4>
-        <p>No streaks designed to guilt you, no paywall on features you already paid for, no push notifications you didn't ask for.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-img">
+        <img src="images/Tonel-04-Exercises.png" alt="Exercise catalog" />
       </div>
-      <div class="principle">
-        <div class="principle-num">04</div>
-        <h4>Your history, forever</h4>
-        <p>Deleting an exercise or routine never erases your logged sessions. Your data is yours, permanently.</p>
+      <div class="feature-text">
+        <span class="feature-eyebrow">Exercise catalog</span>
+        <h2>Find Any <em>Exercise.</em></h2>
+        <p>Filter hundreds of movements by muscle group and equipment. Can't find what you need? Add your own custom exercises in seconds.</p>
+        <ul class="check-list">
+          <li><span class="check-dot"></span>115+ exercises built in, bilingual (EN/ES)</li>
+          <li><span class="check-dot"></span>Filter by muscle group and equipment</li>
+          <li><span class="check-dot"></span>Your PR shown right in the exercise list</li>
+          <li><span class="check-dot"></span>Create fully custom exercises anytime</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PRICING -->
+  <section class="pricing-section">
+    <div class="pricing-inner">
+      <div class="pricing-img-wrap">
+        <img src="images/Tonel-07-Pricing.png" alt="One-time purchase" />
+      </div>
+      <div class="pricing-text">
+        <span class="feature-eyebrow">Pricing</span>
+        <h2>One-time purchase.</h2>
+        <p>No account. No cloud. No subscription. Pay once and train forever — no recurring fees, no features locked behind a paywall, no dark patterns.</p>
+        <div class="pricing-pills">
+          <span class="pill">No subscription</span>
+          <span class="pill">No account required</span>
+          <span class="pill">No ads</span>
+          <span class="pill">No tracking</span>
+          <span class="pill">Offline-first</span>
+        </div>
+        <a href="#" class="btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Get Tonel on the App Store
+        </a>
       </div>
     </div>
   </section>
@@ -965,15 +536,13 @@
   <!-- CTA -->
   <section class="cta-section">
     <div class="cta-inner">
-      <h2>Start tracking.<br><em>No setup required.</em></h2>
+      <h2>Ready to start <em>training?</em></h2>
       <p>Download Tonel, open it, and log your first set in under a minute.</p>
-      <div class="cta-actions">
-        <a href="#" class="btn-primary" style="font-size:1rem; padding: 1rem 2rem;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          Download on the App Store
-        </a>
-      </div>
-      <p class="cta-note">Free. iPhone only. iOS 26+.</p>
+      <a href="#" class="btn-primary" style="font-size:1rem; padding:1rem 2rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download on the App Store
+      </a>
+      <p class="cta-note">Free to try · One-time purchase · iPhone only · iOS 26+</p>
     </div>
   </section>
 
@@ -988,6 +557,19 @@
       <p class="footer-copy">&copy; 2025 Tonel. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    const strip = document.getElementById('strip');
+    let isDown = false, startX, scrollLeft;
+    strip.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - strip.offsetLeft; scrollLeft = strip.scrollLeft; });
+    strip.addEventListener('mouseleave', () => isDown = false);
+    strip.addEventListener('mouseup', () => isDown = false);
+    strip.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      strip.scrollLeft = scrollLeft - (e.pageX - strip.offsetLeft - startX) * 1.5;
+    });
+  </script>
 
 </body>
 </html>
