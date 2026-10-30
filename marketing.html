@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tonel — Gym Tracker for iPhone</title>
-  <meta name="description" content="Track your workouts, crush personal records, and build your best routines. All on your iPhone. No account, no cloud, no subscription." />
+  <title>Tonel — Gym Workout Tracker for iPhone</title>
+  <meta name="description" content="Plan your routines, log every set in seconds and watch your PRs climb. Rest timer on your Lock Screen, supersets, plate calculator and iCloud sync. One-time purchase, no account." />
+  <meta property="og:title" content="Tonel — Gym Workout Tracker" />
+  <meta property="og:description" content="Plan your routines, log every set in seconds and watch your PRs climb. Rest timer on your Lock Screen, supersets, plate calculator and iCloud sync. One-time purchase, no account." />
+  <meta property="og:image" content="https://adrianborlido.github.io/tonel-app/images/header.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
@@ -319,6 +323,32 @@
 
     .cta-note { margin-top: 1.25rem; font-size: 0.75rem; color: var(--text-muted); }
 
+
+    /* ── IPHONE DUO ── */
+    .duo-section, .all-section { border-top: 1px solid var(--border); padding: 6rem 2rem; }
+    .duo-inner, .all-inner { max-width: 1160px; margin: 0 auto; text-align: center; }
+    .duo-inner h2, .all-inner h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.75rem;
+    }
+    .duo-inner h2 em, .all-inner h2 em { font-style: italic; color: var(--accent); }
+    .duo-sub { font-size: 1rem; color: var(--text-sec); margin-bottom: 3rem; }
+    .duo-hero, .duo-grid img {
+      width: 100%; border-radius: 20px; display: block;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .duo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+
+    /* ── EVERYTHING ── */
+    .all-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: left; }
+    .all-card {
+      background: var(--surface); border: 1px solid var(--border2);
+      border-radius: 16px; padding: 1.4rem;
+    }
+    .all-card h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.3rem; }
+    .all-card p { font-size: 0.85rem; color: var(--text-sec); }
+
     /* ── FOOTER ── */
     footer { border-top: 1px solid var(--border); }
 
@@ -349,6 +379,7 @@
       .feature-reverse .feature-img, .feature-reverse .feature-text { order: unset; }
       .feature-img img, .pricing-img-wrap img { max-width: 260px; margin: 0 auto; }
       .pricing-text { max-width: 100%; }
+      .all-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 600px) {
@@ -358,6 +389,8 @@
       .hero-stats { gap: 1.5rem; }
       .strip-track img { width: 175px; }
       .feature { padding: 3.5rem 0; }
+      .duo-grid { grid-template-columns: 1fr; }
+      .duo-section, .all-section { padding: 4rem 1.25rem; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
     }
   </style>
@@ -380,16 +413,16 @@
 
   <!-- HERO -->
   <section class="hero">
-    <span class="hero-badge">Now on iPhone</span>
-    <h1>Train. Log. <em>Improve.</em></h1>
-    <p class="hero-sub">Your workout journal, built for the gym floor. No account, no cloud, no subscription — just your training.</p>
+    <span class="hero-badge">For iPhone &amp; iPhone Duo</span>
+    <h1>Strength training, logged <em>set by set.</em></h1>
+    <p class="hero-sub">Plan your routines, log every set in seconds and watch your PRs climb. Pay once, no account, no ads.</p>
     <a href="#" class="btn-appstore">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       Download on the App Store
     </a>
     <div class="hero-stats">
       <div>
-        <div class="hero-stat-num">115+</div>
+        <div class="hero-stat-num">130</div>
         <div class="hero-stat-label">Exercises</div>
       </div>
       <div class="hero-stat-sep"></div>
@@ -399,8 +432,8 @@
       </div>
       <div class="hero-stat-sep"></div>
       <div>
-        <div class="hero-stat-num">100%</div>
-        <div class="hero-stat-label">Offline</div>
+        <div class="hero-stat-num">1</div>
+        <div class="hero-stat-label">One-time purchase</div>
       </div>
     </div>
   </section>
@@ -409,12 +442,13 @@
   <section class="strip-section">
     <p class="strip-label">See the app</p>
     <div class="strip-track" id="strip">
-      <img src="images/Tonel-02-Routines.png" alt="My Routines" draggable="false" />
-      <img src="images/Tonel-03-Log.png" alt="Log Every Set" draggable="false" />
-      <img src="images/Tonel-01-Hero.png" alt="History" draggable="false" />
-      <img src="images/Tonel-05-Progress.png" alt="Personal Records" draggable="false" />
-      <img src="images/Tonel-06-Session.png" alt="Session Detail" draggable="false" />
-      <img src="images/Tonel-04-Exercises.png" alt="Exercise Catalog" draggable="false" />
+      <img src="images/iphone-1.png" alt="Your routines, one tap from starting" draggable="false" />
+      <img src="images/iphone-2.png" alt="The rest timer runs while you log" draggable="false" />
+      <img src="images/iphone-3.png" alt="Every new PR, called out" draggable="false" />
+      <img src="images/iphone-4.png" alt="See your training, week by week" draggable="false" />
+      <img src="images/iphone-5.png" alt="Watch each lift climb" draggable="false" />
+      <img src="images/iphone-6.png" alt="Pay once. Keep it forever." draggable="false" />
+      <img src="images/iphone-7.png" alt="Everything a lifter needs" draggable="false" />
     </div>
   </section>
 
@@ -423,107 +457,142 @@
 
     <div class="feature">
       <div class="feature-img">
-        <img src="images/Tonel-02-Routines.png" alt="My Routines screen" />
+        <img src="images/iphone-1.png" alt="My Routines screen" loading="lazy" />
       </div>
       <div class="feature-text">
         <span class="feature-eyebrow">Routines</span>
-        <h2>Build Your <em>Split.</em></h2>
-        <p>Push, pull, legs — or any split you choose. Create unlimited workout templates with the exercises, sets, and order that work for your training style.</p>
+        <h2>One tap from <em>starting.</em></h2>
+        <p>Push, pull, legs — or any split you like. Set targets for sets, reps, weight, time or distance, then start any routine with a single tap.</p>
         <ul class="check-list">
-          <li><span class="check-dot"></span>Unlimited routines with custom exercises</li>
-          <li><span class="check-dot"></span>Color-coded categories for easy navigation</li>
-          <li><span class="check-dot"></span>See when you last ran each routine</li>
-          <li><span class="check-dot"></span>Start any session in one tap</li>
+          <li><span class="check-dot"></span>Color-coded categories, including your own</li>
+          <li><span class="check-dot"></span>See when you last trained each routine</li>
+          <li><span class="check-dot"></span>Supersets: linked exercises, no rest between</li>
+          <li><span class="check-dot"></span>Update targets with today's numbers when you finish</li>
         </ul>
       </div>
     </div>
 
     <div class="feature feature-reverse">
       <div class="feature-img">
-        <img src="images/Tonel-03-Log.png" alt="Live workout logging" />
+        <img src="images/iphone-2.png" alt="Live workout with rest timer" loading="lazy" />
       </div>
       <div class="feature-text">
         <span class="feature-eyebrow">Live workout</span>
-        <h2>Log Every <em>Set.</em></h2>
-        <p>Exercises, reps, weight — captured in seconds. Your previous session's numbers are always visible so you always know exactly what to beat.</p>
+        <h2>The rest timer runs <em>while you log.</em></h2>
+        <p>Your previous weights fill in, so you always know what to beat. Complete a set and the countdown starts on its own — add or skip time with a tap.</p>
         <ul class="check-list">
-          <li><span class="check-dot"></span>Previous performance shown per set</li>
-          <li><span class="check-dot"></span>Rest timer with auto-start after each set</li>
-          <li><span class="check-dot"></span>PR badges appear the moment you break a record</li>
-          <li><span class="check-dot"></span>Add or remove sets on the fly</li>
+          <li><span class="check-dot"></span>Countdown on the Lock Screen and in the Dynamic Island</li>
+          <li><span class="check-dot"></span>Mark warm-up, drop and failure sets, and record RPE</li>
+          <li><span class="check-dot"></span>Long-press a set for plates per side and estimated 1RM</li>
+          <li><span class="check-dot"></span>Swipe the workout down — it keeps running in a mini bar</li>
         </ul>
       </div>
     </div>
 
     <div class="feature">
       <div class="feature-img">
-        <img src="images/Tonel-05-Progress.png" alt="Personal records and progress" />
+        <img src="images/iphone-3.png" alt="Workout summary with new personal records" loading="lazy" />
       </div>
       <div class="feature-text">
         <span class="feature-eyebrow">Personal records</span>
-        <h2>See Your <em>Gains.</em></h2>
-        <p>Personal records and volume tracked automatically. PRs use estimated 1-rep max — so a smart set of 5 can beat a heavy single. Strength is the real metric.</p>
+        <h2>Every new PR, <em>called out.</em></h2>
+        <p>Finish a session to see duration, volume and exactly what you beat. Strength PRs are ranked by estimated 1-rep max, so a smart set of 5 can beat a heavy single.</p>
         <ul class="check-list">
-          <li><span class="check-dot"></span>Estimated 1RM via the Epley formula</li>
-          <li><span class="check-dot"></span>Weight progression chart per exercise</li>
-          <li><span class="check-dot"></span>Full set-by-set history going back forever</li>
-          <li><span class="check-dot"></span>PRs preserved even if you edit history</li>
+          <li><span class="check-dot"></span>Automatic PRs for 1RM, time, distance and pace</li>
+          <li><span class="check-dot"></span>Warm-ups never inflate your PRs or volume</li>
+          <li><span class="check-dot"></span>Share a clean summary card of your workout</li>
+          <li><span class="check-dot"></span>Notes per workout and per exercise</li>
         </ul>
       </div>
     </div>
 
     <div class="feature feature-reverse">
       <div class="feature-img">
-        <img src="images/Tonel-06-Session.png" alt="Session detail view" />
+        <img src="images/iphone-4.png" alt="History with streaks and weekly sets per muscle group" loading="lazy" />
       </div>
       <div class="feature-text">
         <span class="feature-eyebrow">History</span>
-        <h2>Relive Every <em>Session.</em></h2>
-        <p>Every set, every rep, every PR from every workout you've finished — volume, duration, and a complete exercise breakdown, saved locally on your iPhone forever.</p>
+        <h2>Your training, <em>week by week.</em></h2>
+        <p>Streaks, sessions and sets per muscle group at a glance. Every set from every workout you've finished, one tap away.</p>
         <ul class="check-list">
-          <li><span class="check-dot"></span>Total volume and duration per session</li>
-          <li><span class="check-dot"></span>Per-exercise breakdown with PR markers</li>
-          <li><span class="check-dot"></span>Streaks and weekly session stats</li>
-          <li><span class="check-dot"></span>5-second undo if you delete by mistake</li>
+          <li><span class="check-dot"></span>Weekly sets per muscle group chart</li>
+          <li><span class="check-dot"></span>Training heatmap and weekly streaks</li>
+          <li><span class="check-dot"></span>Edit any past session — PRs recalculate</li>
+          <li><span class="check-dot"></span>Export your full history to CSV any time</li>
         </ul>
       </div>
     </div>
 
     <div class="feature">
       <div class="feature-img">
-        <img src="images/Tonel-04-Exercises.png" alt="Exercise catalog" />
+        <img src="images/iphone-5.png" alt="Exercise progression chart" loading="lazy" />
       </div>
       <div class="feature-text">
-        <span class="feature-eyebrow">Exercise catalog</span>
-        <h2>Find Any <em>Exercise.</em></h2>
-        <p>Filter hundreds of movements by muscle group and equipment. Can't find what you need? Add your own custom exercises in seconds.</p>
+        <span class="feature-eyebrow">Progress</span>
+        <h2>Watch each lift <em>climb.</em></h2>
+        <p>Top weight, estimated 1RM, volume and reps over time, for every exercise you train.</p>
         <ul class="check-list">
-          <li><span class="check-dot"></span>115+ exercises built in, bilingual (EN/ES)</li>
-          <li><span class="check-dot"></span>Filter by muscle group and equipment</li>
-          <li><span class="check-dot"></span>Your PR shown right in the exercise list</li>
-          <li><span class="check-dot"></span>Create fully custom exercises anytime</li>
+          <li><span class="check-dot"></span>130 exercises across 10 muscle groups</li>
+          <li><span class="check-dot"></span>Step-by-step how-to in English and Spanish</li>
+          <li><span class="check-dot"></span>Track weight × reps, time, distance or cardio</li>
+          <li><span class="check-dot"></span>Create your own custom exercises</li>
         </ul>
       </div>
     </div>
 
   </div>
 
+  <!-- IPHONE DUO -->
+  <section class="duo-section" id="duo">
+    <div class="duo-inner">
+      <span class="feature-eyebrow">iPhone Duo</span>
+      <h2>Made for <em>iPhone Duo.</em></h2>
+      <p class="duo-sub">Unfold for room to plan. Fold it and keep training.</p>
+      <img class="duo-hero" src="images/duo-1.png" alt="Tonel on iPhone Duo, unfolded and folded" loading="lazy" />
+      <div class="duo-grid">
+        <img src="images/duo-2.png" alt="Log your workout on the big screen" loading="lazy" />
+        <img src="images/duo-3.png" alt="History and details, side by side" loading="lazy" />
+        <img src="images/duo-4.png" alt="Progress charts with room to breathe" loading="lazy" />
+        <img src="images/duo-5.png" alt="Works folded, too" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- EVERYTHING -->
+  <section class="all-section">
+    <div class="all-inner">
+      <h2>Everything a lifter <em>needs.</em></h2>
+      <p class="duo-sub">All of it included in the one-time purchase.</p>
+      <div class="all-grid">
+        <div class="all-card"><h3>Supersets</h3><p>Linked exercises, no rest between</p></div>
+        <div class="all-card"><h3>Plates per side</h3><p>Long-press a set for 1RM and plates</p></div>
+        <div class="all-card"><h3>Automatic PRs</h3><p>1RM, time, distance and pace</p></div>
+        <div class="all-card"><h3>Live Activity</h3><p>Rest timer on the Lock Screen</p></div>
+        <div class="all-card"><h3>Home-screen widget</h3><p>Next routine and your streak</p></div>
+        <div class="all-card"><h3>Siri and Shortcuts</h3><p>“Start Push Day in Tonel”</p></div>
+        <div class="all-card"><h3>Apple Health</h3><p>Save workouts as strength training</p></div>
+        <div class="all-card"><h3>130 exercises</h3><p>How-to steps in English and Spanish</p></div>
+      </div>
+    </div>
+  </section>
+
   <!-- PRICING -->
   <section class="pricing-section">
     <div class="pricing-inner">
       <div class="pricing-img-wrap">
-        <img src="images/Tonel-07-Pricing.png" alt="One-time purchase" />
+        <img src="images/iphone-6.png" alt="Pay once. Keep it forever." loading="lazy" />
       </div>
       <div class="pricing-text">
         <span class="feature-eyebrow">Pricing</span>
-        <h2>One-time purchase.</h2>
-        <p>No account. No cloud. No subscription. Pay once and train forever — no recurring fees, no features locked behind a paywall, no dark patterns.</p>
+        <h2>Pay once. Keep it forever.</h2>
+        <p>No subscription, no ads, no account. Every feature is included — nothing renews, nothing expires.</p>
         <div class="pricing-pills">
+          <span class="pill">One-time purchase</span>
           <span class="pill">No subscription</span>
-          <span class="pill">No account required</span>
           <span class="pill">No ads</span>
-          <span class="pill">No tracking</span>
-          <span class="pill">Offline-first</span>
+          <span class="pill">No account needed</span>
+          <span class="pill">Works offline</span>
+          <span class="pill">Optional iCloud sync</span>
         </div>
         <a href="#" class="btn-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -542,7 +611,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         Download on the App Store
       </a>
-      <p class="cta-note">Free to try · One-time purchase · iPhone only · iOS 26+</p>
+      <p class="cta-note">One-time purchase · iPhone &amp; iPhone Duo · iOS 26+ · English &amp; Spanish</p>
     </div>
   </section>
 
@@ -554,7 +623,7 @@
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="support.html">Support</a>
       </div>
-      <p class="footer-copy">&copy; 2025 Tonel. All rights reserved.</p>
+      <p class="footer-copy">&copy; 2026 Tonel. All rights reserved.</p>
     </div>
   </footer>
 
