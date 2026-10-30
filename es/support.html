@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soporte — Tonel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --border: #1f1f1f;
+      --border2: #2a2a2a;
+      --accent: #c6ff00;
+      --accent-dim: rgba(198, 255, 0, 0.08);
+      --text: #f0f0f0;
+      --text-sec: #999;
+      --text-muted: #555;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem; color: var(--text);
+      text-decoration: none; letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; }
+
+    .nav-links a {
+      font-size: 0.78rem; font-weight: 400;
+      color: var(--text-muted); text-decoration: none;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.78rem !important; font-weight: 500 !important;
+      color: #000 !important; background: var(--accent);
+      border-radius: 2rem; padding: 0.45rem 1rem !important;
+      text-transform: none !important; letter-spacing: 0 !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85 !important; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 9rem 2rem 4rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(198, 255, 0, 0.3);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 8vw, 4.5rem);
+      line-height: 1.05; letter-spacing: -0.02em;
+      color: var(--text); margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+
+    .hero p {
+      font-size: 1.05rem; color: var(--text-sec);
+      max-width: 480px; line-height: 1.7;
+    }
+
+    /* ── Contact card ── */
+    .contact-section {
+      max-width: 680px; margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem;
+      display: flex; align-items: center; gap: 2rem;
+      position: relative; overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .contact-icon {
+      width: 56px; height: 56px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(198, 255, 0, 0.2);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 24px; height: 24px; color: var(--accent); }
+
+    .contact-text h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem; margin-bottom: 0.35rem;
+    }
+
+    .contact-text p {
+      font-size: 0.875rem; color: var(--text-sec); margin-bottom: 1rem;
+    }
+
+    .contact-text a.email-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.875rem; font-weight: 500;
+      color: var(--accent); text-decoration: none;
+      border-bottom: 1px solid rgba(198, 255, 0, 0.3);
+      padding-bottom: 1px; transition: border-color 0.2s;
+    }
+    .contact-text a.email-link:hover { border-color: var(--accent); }
+
+    /* ── Section ── */
+    .section { max-width: 680px; margin: 0 auto; padding: 0 2rem 5rem; }
+
+    .section-header { margin-bottom: 2rem; }
+
+    .section-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem; letter-spacing: -0.02em; margin-bottom: 0.35rem;
+    }
+
+    .section-header p { font-size: 0.875rem; color: var(--text-sec); }
+
+    /* ── FAQ ── */
+    .faq-list { list-style: none; }
+
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+
+    .faq-toggle {
+      width: 100%; background: none; border: none;
+      color: var(--text); cursor: pointer;
+      padding: 1.25rem 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      text-align: left;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem; font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+    .faq-toggle:hover { color: var(--accent); }
+
+    .faq-chevron {
+      flex-shrink: 0; width: 18px; height: 18px;
+      color: var(--text-muted);
+      transition: transform 0.25s ease, color 0.2s;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--accent); }
+
+    .faq-body {
+      display: none; padding-bottom: 1.25rem;
+      font-size: 0.875rem; color: var(--text-sec);
+      line-height: 1.75; max-width: 540px;
+    }
+    .faq-item.open .faq-body { display: block; }
+
+    .faq-body a {
+      color: var(--accent); text-decoration: none;
+      border-bottom: 1px solid rgba(198, 255, 0, 0.3);
+    }
+
+    /* ── Steps ── */
+    .steps { display: flex; flex-direction: column; gap: 1rem; }
+
+    .step { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start; }
+
+    .step-num {
+      width: 2.5rem; height: 2.5rem;
+      background: var(--accent-dim);
+      border: 1px solid rgba(198, 255, 0, 0.25);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--accent); flex-shrink: 0;
+    }
+
+    .step-content h4 { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.2rem; padding-top: 0.5rem; }
+    .step-content p { font-size: 0.825rem; color: var(--text-sec); line-height: 1.6; }
+
+    /* ── Divider ── */
+    .divider {
+      max-width: 680px; margin: 0 auto 4rem;
+      padding: 0 2rem; border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Footer ── */
+    footer { border-top: 1px solid var(--border); }
+
+    .footer-inner {
+      max-width: 680px; margin: 0 auto; padding: 2rem;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem; color: var(--text-muted); text-decoration: none;
+    }
+    .footer-logo span { color: var(--accent); }
+
+    .footer-links { display: flex; align-items: center; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 0.75rem; color: var(--text-muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-copy { font-size: 0.72rem; color: var(--text-muted); }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.7rem; }
+      .hero, .contact-section, .section { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .contact-card { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+  <link rel="alternate" hreflang="en" href="https://adrianborlido.github.io/tonel-app/support.html" />
+  <link rel="alternate" hreflang="es" href="https://adrianborlido.github.io/tonel-app/es/support.html" />
+</head>
+<body>
+
+  <nav>
+    <a href="marketing.html" class="nav-logo">Tonel<span>.</span></a>
+    <div class="nav-links">
+      <a href="marketing.html">Inicio</a>
+      <a href="privacy-policy.html">Privacidad</a>
+      <a href="../support.html" lang="en">EN</a>
+      <a href="#" class="nav-cta">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        App Store
+      </a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <span class="hero-label">Soporte</span>
+    <h1>¿En qué podemos <em>ayudarte?</em></h1>
+    <p>¿Tienes una duda o algún problema? Estamos aquí. Escríbenos directamente o consulta las respuestas de abajo.</p>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-card">
+      <div class="contact-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+        </svg>
+      </div>
+      <div class="contact-text">
+        <h3>Soporte por email</h3>
+        <p>Solemos responder en menos de 24 horas en días laborables.</p>
+        <a href="mailto:borlidodev@gmail.com" class="email-link">
+          borlidodev@gmail.com
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section">
+    <div class="section-header">
+      <h2>Primeros pasos</h2>
+      <p>¿Nuevo en Tonel? Así registras tu primer entreno.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Crea una rutina</h4>
+          <p>Abre <strong>Rutinas</strong> y pulsa el botón + para crear una plantilla con tus ejercicios y series.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Empieza una sesión</h4>
+          <p>Pulsa <strong>Empezar</strong> en cualquier rutina, o empieza un entreno vacío. La pantalla del entreno registra tus series en tiempo real.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Registra tus series</h4>
+          <p>Introduce peso y repeticiones (o tiempo / distancia) en cada serie. Tu marca anterior aparece al lado. Pulsa el check para completarla y el descanso arranca solo.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Termina y revisa</h4>
+          <p>Pulsa <strong>Terminar</strong> para ver el resumen (duración, volumen y récords nuevos) y luego <strong>Listo</strong> para guardarlo en tu historial.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section">
+    <div class="section-header">
+      <h2>Preguntas frecuentes</h2>
+      <p>Respuestas rápidas a lo que más se pregunta.</p>
+    </div>
+    <ul class="faq-list">
+
+      <li class="faq-item">
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Mis entrenos tienen copia y se sincronizan?
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div class="faq-body">
+          Sí, si iCloud está activado para Tonel. Tus rutinas, entrenos y récords se sincronizan a través de tu cuenta privada de iCloud con tus otros dispositivos, sin cuentas ni registros en Tonel. Sin iCloud, todo se queda en tu iPhone y se incluye en tu copia de seguridad habitual de iCloud o del ordenador.
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Tonel funciona sin conexión?
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div class="faq-body">
+          Totalmente. Todas las funciones van sin internet. Cuando vuelvas a tener conexión, iCloud se pone al día solo.
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Cómo funcionan los récords personales?
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div class="faq-body">
+          Tonel detecta los récords automáticamente al completar cada serie. Los de fuerza se ordenan por 1RM estimado (fórmula de Epley), así que 5 repeticiones con 80 kg pueden superar un sencillo anterior con 90 kg. En ejercicios por tiempo cuenta la mayor duración, en los de distancia la mayor distancia y en cardio el ritmo más rápido. Las series de calentamiento nunca cuentan.
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Cómo funcionan las superseries?
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div class="faq-body">
+          Al editar una rutina, enlaza dos o más ejercicios seguidos en una superserie. Durante el entreno, Tonel te lleva por los ejercicios enlazados sin descanso entre ellos y solo descansas tras el último.
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Dónde veo el descanso con el móvil bloqueado?
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div class="faq-body">
+          La cuenta atrás aparece como Actividad en vivo en la pantalla bloqueada y en la Dynamic Island. Al terminar el descanso recibirás también un aviso, vibración y sonido.
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Cómo funciona la calculadora de discos?
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div class="faq-body">
+          Durante el entreno, mantén pulsada una serie para ver los discos que cargar en cada lado de una barra estándar (20 kg / 45 lb) y tu 1RM estimado para esa serie.
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Puedo cambiar entre kilos y libras?
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div class="faq-body">
+          Sí. Abre <strong>Ajustes</strong> en Tonel y cambia la unidad. Todos los pesos se guardan en kilos y se convierten en pantalla, así que puedes cambiar cuando quieras sin alterar tu historial.
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Cómo añado un ejercicio propio?
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div class="faq-body">
+          Ve a la pestaña <strong>Ejercicios</strong> y pulsa <strong>+</strong>. Ponle nombre, elige grupo muscular y equipamiento, y el tipo de registro (peso y repeticiones, tiempo, distancia o cardio). Aparecerá en tu lista al momento.
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Puedo guardar mis entrenos en Apple Salud?
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div class="faq-body">
+          Sí. Activa <strong>Guardar entrenamientos en Apple Salud</strong> en Ajustes. Los entrenos terminados se guardan como entrenamiento de fuerza. Tonel solo escribe en Salud: nunca lee tus datos de salud.
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Puedo empezar un entreno con Siri o un widget?
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div class="faq-body">
+          Sí. Di «Empezar entreno en Tonel» o «Empezar Empuje en Tonel» (con el nombre de cualquier rutina), o úsalo en Atajos. También puedes añadir el widget <strong>Inicio rápido</strong> a tu pantalla de inicio para empezar tu próxima rutina y ver tu racha.
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Puedo exportar mis datos?
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div class="faq-body">
+          Sí. Ve a <strong>Ajustes → Exportar datos</strong> para exportar todo tu historial en un archivo CSV.
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-toggle" aria-expanded="false">
+          He borrado un entreno sin querer. ¿Puedo recuperarlo?
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div class="faq-body">
+          Tras borrar, Tonel muestra un aviso para deshacer durante 5 segundos: pulsa <strong>Deshacer</strong> antes de que desaparezca para recuperar la sesión. Después, el borrado es definitivo y se sincroniza con tus otros dispositivos.
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Cuánto cuesta Tonel?
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div class="faq-body">
+          Tonel es un pago único. Sin suscripción, sin anuncios y sin funciones bloqueadas: todo está incluido.
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-toggle" aria-expanded="false">
+          ¿En qué dispositivos funciona Tonel?
+          <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div class="faq-body">
+          Tonel necesita iOS 26 o posterior en iPhone y está pensada para iPhone Duo, con vistas lado a lado en la pantalla grande. Por ahora no está disponible para iPad ni Apple Watch.
+        </div>
+      </li>
+
+    </ul>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="marketing.html" class="footer-logo">Tonel<span>.</span></a>
+      <div class="footer-links">
+        <a href="marketing.html">Inicio</a>
+        <a href="privacy-policy.html">Política de privacidad</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Tonel. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-toggle').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
