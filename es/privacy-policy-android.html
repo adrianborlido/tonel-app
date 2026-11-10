@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de privacidad (Android) — Tonel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --border: #1f1f1f;
+      --border2: #2a2a2a;
+      --accent: #c6ff00;
+      --accent-dim: rgba(198, 255, 0, 0.08);
+      --text: #f0f0f0;
+      --text-sec: #999;
+      --text-muted: #555;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem; color: var(--text);
+      text-decoration: none; letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; }
+
+    .nav-links a {
+      font-size: 0.78rem; font-weight: 400;
+      color: var(--text-muted); text-decoration: none;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.78rem !important; font-weight: 500 !important;
+      color: #000 !important; background: var(--accent);
+      border-radius: 2rem; padding: 0.45rem 1rem !important;
+      text-transform: none !important; letter-spacing: 0 !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85 !important; }
+
+    /* ── Content ── */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 8rem 2rem 6rem;
+    }
+
+    .eyebrow {
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.25rem);
+      line-height: 1.1; letter-spacing: -0.025em;
+      color: var(--text); margin-bottom: 0.75rem;
+    }
+
+    .meta {
+      font-size: 0.8rem; color: var(--text-muted);
+      margin-bottom: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem; color: var(--text);
+      margin: 3rem 0 0.75rem; letter-spacing: -0.01em;
+    }
+
+    p { color: var(--text-sec); margin-bottom: 1rem; }
+
+    ul { list-style: none; margin-bottom: 1rem; }
+
+    ul li {
+      color: var(--text-sec);
+      padding: 0.35rem 0 0.35rem 1.25rem;
+      position: relative;
+    }
+    ul li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: var(--accent); opacity: 0.6;
+    }
+
+    a {
+      color: var(--accent); text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    a:hover { border-color: var(--accent); }
+
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+    }
+    .callout p { margin: 0; font-size: 0.95rem; }
+
+    /* ── Footer ── */
+    footer { border-top: 1px solid var(--border); }
+
+    .footer-inner {
+      max-width: 680px; margin: 0 auto; padding: 2rem;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem; color: var(--text-muted); text-decoration: none;
+      border-bottom: none;
+    }
+    .footer-logo span { color: var(--accent); }
+
+    .footer-links { display: flex; align-items: center; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 0.75rem; color: var(--text-muted);
+      text-decoration: none; border-bottom: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); border-color: transparent; }
+
+    .footer-copy { font-size: 0.72rem; color: var(--text-muted); }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.7rem; }
+      main { padding: 7rem 1.25rem 4rem; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+  <link rel="alternate" hreflang="en" href="https://adrianborlido.github.io/tonel-app/privacy-policy-android.html" />
+  <link rel="alternate" hreflang="es" href="https://adrianborlido.github.io/tonel-app/es/privacy-policy-android.html" />
+</head>
+<body>
+
+  <nav>
+    <a href="marketing.html" class="nav-logo">Tonel<span>.</span></a>
+    <div class="nav-links">
+      <a href="marketing.html">Inicio</a>
+      <a href="support.html">Soporte</a>
+      <a href="../privacy-policy-android.html" lang="en">EN</a>
+    </div>
+  </nav>
+
+  <main>
+    <p class="eyebrow">Legal · Android</p>
+    <h1>Política de privacidad</h1>
+    <p class="meta">En vigor desde: 10 de noviembre de 2026 &nbsp;·&nbsp; Última actualización: 10 de noviembre de 2026</p>
+
+    <div class="callout">
+      <p><strong style="color:var(--text)">En resumen:</strong> Tonel para Android no necesita cuenta, no tiene acceso a internet y no recoge ningún dato. Tus entrenos se quedan en tu dispositivo y, si la copia de seguridad de Android está activada, en la copia de tu propia cuenta de Google.</p>
+    </div>
+
+    <h2>Introducción</h2>
+    <p>Tonel («la app», «nosotros») es una app para registrar entrenos y hacer seguimiento de ejercicios. Esta política de privacidad cubre Tonel para Android y explica qué información maneja la app y cómo. Tonel para iPhone tiene su propia <a href="privacy-policy.html">política de privacidad</a>.</p>
+
+    <h2>Tus datos de entrenamiento</h2>
+    <p>Las rutinas, entrenos, récords personales y ejercicios propios se guardan solo en tu dispositivo. Tonel para Android no solicita el permiso de internet, así que no puede enviar tus datos a ningún sitio: no hay cuenta, ni sincronización, ni servidor. El desarrollador no puede acceder a tus datos.</p>
+
+    <h2>Copia de seguridad de Android</h2>
+    <p>Si la copia de seguridad está activada en los ajustes de tu dispositivo, Android puede incluir los datos de Tonel en la copia de tu dispositivo, guardada en tu propia cuenta de Google, y restaurarlos al configurar un dispositivo nuevo. Esto lo gestiona Google según su propia política de privacidad; el desarrollador no puede acceder a estas copias.</p>
+
+    <h2>Health Connect</h2>
+    <p>Guardar entrenos en Health Connect es opcional y está desactivado por defecto. Si lo activas, Tonel pide permiso para escribir sesiones de ejercicio y escribe cada entreno terminado en Health Connect como sesión de entrenamiento de fuerza (su nombre, hora de inicio y hora de fin). Tonel nunca lee datos de Health Connect, y Tonel nunca usa estos datos para publicidad ni los comparte con terceros. Puedes retirar el permiso o borrar estas entradas en cualquier momento desde la app Health Connect.</p>
+
+    <h2>Analíticas y publicidad</h2>
+    <p>Tonel para Android no contiene analíticas, publicidad ni SDK de seguimiento de terceros. No usa el ID de publicidad de Android.</p>
+
+    <h2>Permisos</h2>
+    <ul>
+      <li>Notificaciones: para mostrar el entreno en curso y avisarte cuando termina un descanso</li>
+      <li>Servicio en primer plano y wake lock: para que el cronómetro del entreno y la cuenta atrás del descanso sigan siendo exactos con la pantalla apagada</li>
+      <li>Vibración: para el aviso de fin de descanso</li>
+      <li>Health Connect (escribir ejercicio): solo si activas guardar entrenos en Health Connect</li>
+    </ul>
+
+    <h2>Datos que no recogemos</h2>
+    <ul>
+      <li>Información personal como tu nombre, correo, edad o ubicación</li>
+      <li>Datos de salud leídos de Health Connect</li>
+      <li>Analíticas de uso o identificadores del dispositivo</li>
+      <li>Información de pago</li>
+    </ul>
+
+    <h2>Exportación y eliminación</h2>
+    <p>Puedes exportar todo tu historial a CSV en cualquier momento desde Ajustes → Exportar datos. Al desinstalar la app, o al borrar su almacenamiento desde Ajustes de Android → Aplicaciones → Tonel → Almacenamiento, se eliminan sus datos locales. Las copias de seguridad se pueden gestionar o borrar desde las copias de dispositivo de tu cuenta de Google. Los entrenos guardados en Health Connect se pueden borrar en la app Health Connect.</p>
+
+    <h2>Privacidad de menores</h2>
+    <p>Tonel no recoge conscientemente información personal de menores de 13 años (o la edad aplicable en tu región).</p>
+
+    <h2>Cambios en esta política</h2>
+    <p>Si actualizamos esta política, cambiaremos la fecha de «Última actualización» al principio de esta página. Los cambios importantes también se indicarán en las notas de versión de Google Play.</p>
+
+    <h2>Contacto</h2>
+    <p>Si tienes alguna pregunta sobre esta política de privacidad, puedes escribirnos a:</p>
+    <p><a href="mailto:borlidodev@gmail.com">borlidodev@gmail.com</a></p>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="marketing.html" class="footer-logo">Tonel<span>.</span></a>
+      <div class="footer-links">
+        <a href="marketing.html">Inicio</a>
+        <a href="support.html">Soporte</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Tonel. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
